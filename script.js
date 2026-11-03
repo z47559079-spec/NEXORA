@@ -271,6 +271,18 @@ function addToCart(id) {
     });
   }
 
+  localStorage.setItem("nexoraCart", JSON.stringify(cart));
+
+  renderCart();
+
+  showToast(
+    language === "fa"
+      ? "محصول به سبد خرید اضافه شد"
+      : "Product added to cart"
+  );
+}
+  }
+
   renderCart();
 
   showToast(
@@ -291,7 +303,10 @@ function changeQuantity(id, amount) {
     cart = cart.filter(item => item.id !== id);
   }
 
+  localStorage.setItem("nexoraCart", JSON.stringify(cart));
+
   renderCart();
+}
 }
 
 function renderCart() {
