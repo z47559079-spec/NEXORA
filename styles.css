@@ -282,7 +282,7 @@ nav a:hover {
 .about {
   margin: 40px 9%;
   padding: 70px 40px;
-  background: linear-gradient(120deg, #14283b, #101622);
+ background: transparent;
   border: 1px solid #ffffff15;
   border-radius: 20px;
   text-align: center;
