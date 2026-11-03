@@ -884,3 +884,59 @@ body.lang-en .contact {
   align-items: center;
   gap: 8px;
 }
+/* FAVORITES BUTTON */
+.favorite-button {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #45d5ff;
+  border-radius: 12px;
+  background: transparent;
+  color: #9aaec0;
+  font-size: 23px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+
+.favorite-button:hover {
+  color: #ff4d79;
+  border-color: #ff4d79;
+  transform: scale(1.12);
+}
+
+.favorite-button.active {
+  color: #ff4d79;
+  border-color: #ff4d79;
+  background: #ff4d7918;
+  box-shadow: 0 0 15px #ff4d7940;
+}
+/* FAVORITES BUTTON */
+.favorite-button {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #45d5ff;
+  border-radius: 12px;
+  background: transparent;
+  color: #9aaec0;
+  font-size: 23px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+
+.favorite-button:hover {
+  color: #ff4d79;
+  border-color: #ff4d79;
+  transform: scale(1.12);
+}
+
+.favorite-button.active {
+  color: #ff4d79;
+  border-color: #ff4d79;
+  background: #ff4d7918;
+  box-shadow: 0 0 15px #ff4d7940;
+}
