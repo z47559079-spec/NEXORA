@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXORA | Smart Tech</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <div class="announcement" data-fa="ارسال رایگان برای سفارش‌های ویژه" data-en="Free shipping on selected orders">
+    ارسال رایگان برای سفارش‌های ویژه
+  </div>
+
+  <header>
+    <a class="logo" href="#">NEX<span>O</span>RA.</a>
+
+    <nav>
+      <a href="#home" data-fa="خانه" data-en="Home">خانه</a>
+      <a href="#products" data-fa="محصولات" data-en="Products">محصولات</a>
+      <a href="#about" data-fa="درباره ما" data-en="About">درباره ما</a>
+      <a href="#contact" data-fa="تماس با ما" data-en="Contact">تماس با ما</a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="languageToggle">EN</button>
+      <button id="cartToggle">
+        <span data-fa="سبد خرید" data-en="Cart">سبد خرید</span>
+        <span id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" id="home">
+
+      <div class="hero-content">
+        <span class="eyebrow"
+          data-fa="نسل جدید تکنولوژی اینجاست"
+          data-en="THE NEXT GENERATION IS HERE">
+          نسل جدید تکنولوژی اینجاست
+        </span>
+
+        <h1
+          data-fa="هوشمندتر زندگی کن.<br><em>متفاوت</em> انتخاب کن."
+          data-en="Live smarter.<br>Choose <em>different.</em>">
+          هوشمندتر زندگی کن.<br>
+          <em>متفاوت</em> انتخاب کن.
+        </h1>
+
+        <p
+          data-fa="گجت‌هایی برای سبک زندگی آینده؛ با طراحی زیبا و فناوری پیشرفته."
+          data-en="Discover smart gadgets designed for your future lifestyle.">
+          گجت‌هایی برای سبک زندگی آینده؛ با طراحی زیبا و فناوری پیشرفته.
+        </p>
+
+        <a href="#products" class="main-button"
+          data-fa="مشاهده محصولات"
+          data-en="Explore Products">
+          مشاهده محصولات
+        </a>
+      </div>
+
+      <div class="hero-image">
+        <img
+          src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=900"
+          alt="Smart Watch">
+      </div>
+
+    </section>
+
+    <section class="products" id="products">
+
+      <div class="section-title">
+        <span>OUR COLLECTION</span>
+        <h2 data-fa="محصولات منتخب" data-en="Featured Products">
+          محصولات منتخب
+        </h2>
+      </div>
+
+      <div class="product-tools">
+        <input
+          type="search"
+          id="searchInput"
+          data-placeholder-fa="جست‌وجوی محصول..."
+          data-placeholder-en="Search products..."
+          placeholder="جست‌وجوی محصول...">
+
+        <select id="categoryFilter">
+          <option value="all" data-fa="همه دسته‌ها" data-en="All categories">همه دسته‌ها</option>
+          <option value="wearable" data-fa="گجت پوشیدنی" data-en="Wearables">گجت پوشیدنی</option>
+          <option value="audio" data-fa="صوتی" data-en="Audio">صوتی</option>
+          <option value="accessory" data-fa="لوازم جانبی" data-en="Accessories">لوازم جانبی</option>
+        </select>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+
+    </section>
+
+    <section class="about" id="about">
+      <div>
+        <span>ABOUT NEXORA</span>
+
+        <h2
+          data-fa="تکنولوژی برای زندگی بهتر"
+          data-en="Technology for a better life">
+          تکنولوژی برای زندگی بهتر
+        </h2>
+
+        <p
+          data-fa="ما بهترین گجت‌های هوشمند را برای تجربه یک زندگی مدرن انتخاب می‌کنیم."
+          data-en="We select smart gadgets for a modern and better lifestyle.">
+          ما بهترین گجت‌های هوشمند را برای تجربه یک زندگی مدرن انتخاب می‌کنیم.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2 data-fa="با ما در ارتباط باش" data-en="Stay Connected">
+        با ما در ارتباط باش
+      </h2>
+      <p>info@nexora.example</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <a class="logo" href="#">NEX<span>O</span>RA.</a>
+    <p>SMART TECH. SMART LIFE.</p>
+    <small>© 2026 NEXORA</small>
+  </footer>
+
+  <div class="cart-backdrop" id="cartBackdrop"></div>
+
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h2 data-fa="سبد خرید شما" data-en="Your Cart">سبد خرید شما</h2>
+      <button id="cartClose">×</button>
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div class="cart-footer">
+      <strong>
+        <span data-fa="مجموع:" data-en="Total:">مجموع:</span>
+        <span id="cartTotal">۰ تومان</span>
+      </strong>
+
+      <button id="checkoutButton" class="main-button"
+        data-fa="ادامه خرید"
+        data-en="Checkout">
+        ادامه خرید
+      </button>
+    </div>
+  </aside>
+
+  <div id="toast" class="toast"></div>
+
+</body>
+</html>
