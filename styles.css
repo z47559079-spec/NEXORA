@@ -940,3 +940,50 @@ body.lang-en .contact {
   background: #ff4d7918;
   box-shadow: 0 0 15px #ff4d7940;
 }
+/* FAVORITES PAGE */
+
+.favorites-page {
+  width: 90%;
+  max-width: 1200px;
+  min-height: 70vh;
+  margin: 80px auto;
+  text-align: center;
+}
+
+.favorites-page h1 {
+  color: #55d9ff;
+  font-size: 32px;
+  margin-bottom: 15px;
+  text-shadow: 0 0 18px #42c8f555;
+}
+
+.favorites-page > p {
+  color: #c5d5e5;
+  margin-bottom: 45px;
+  line-height: 2;
+}
+
+.empty-favorites {
+  grid-column: 1 / -1;
+  color: #c5d5e5;
+  font-size: 18px;
+  padding: 70px 20px;
+  border: 1px dashed #45d5ff70;
+  border-radius: 20px;
+  background: #101c2c;
+}
+
+.favorites-page .product-card {
+  animation: favoriteAppear .4s ease;
+}
+
+@keyframes favoriteAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
