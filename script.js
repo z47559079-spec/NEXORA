@@ -103,6 +103,62 @@ function money(amount) {
   return "$" + amount.toLocaleString("en-US");
 }
 
+let activeProductId = null;
+
+function openProductDetails(id) {
+  const product = products.find(p => p.id === id);
+
+  if (!product) return;
+
+  activeProductId = id;
+
+  const name = language === "fa"
+    ? product.nameFa
+    : product.nameEn;
+
+  const category = language === "fa"
+    ? product.categoryFa
+    : product.categoryEn;
+
+  const descriptions = {
+    wearable: {
+      fa: "این گجت پوشیدنی با طراحی مدرن و امکانات هوشمند، همراهی مناسب برای زندگی روزمره شماست.",
+      en: "A modern wearable gadget designed to make your everyday life smarter."
+    },
+    audio: {
+      fa: "با این محصول صوتی از تجربه شنیداری جذاب و طراحی کاربردی لذت ببرید.",
+      en: "Enjoy an immersive listening experience with modern design."
+    },
+    accessory: {
+      fa: "یک وسیله کاربردی و مدرن برای کامل‌تر کردن تجربه استفاده از گجت‌های هوشمند.",
+      en: "A modern and practical accessory for your smart gadgets."
+    }
+  };
+
+  $("#modalImage").src = product.image;
+  $("#modalImage").alt = name;
+  $("#modalName").textContent = name;
+  $("#modalCategory").textContent = category;
+  $("#modalDescription").textContent =
+    descriptions[product.category][language];
+
+  $("#modalPrice").textContent = money(
+    language === "fa" ? product.price : product.priceEn
+  );
+
+  $("#modalAdd").textContent =
+    language === "fa"
+      ? "افزودن به سبد خرید"
+      : "Add to Cart";
+
+  $("#productModal").classList.add("active");
+}
+
+function closeProductDetails() {
+  $("#productModal").classList.remove("active");
+  activeProductId = null;
+}
+
 function renderProducts() {
   const query = $("#searchInput").value.toLowerCase();
   const category = $("#categoryFilter").value;
@@ -309,14 +365,37 @@ $("#searchInput").addEventListener("input", renderProducts);
 // Filter products
 $("#categoryFilter").addEventListener("change", renderProducts);
 
-// Add products to cart
+// Product details and add to cart
 $("#productGrid").addEventListener("click", event => {
-  const button = event.target.closest("[data-add]");
+  const detailButton = event.target.closest("[data-details]");
+  const addButton = event.target.closest("[data-add]");
 
-  if (button) {
-    addToCart(Number(button.dataset.add));
+  if (detailButton) {
+    openProductDetails(Number(detailButton.dataset.details));
+  }
+
+  if (addButton) {
+    addToCart(Number(addButton.dataset.add));
   }
 });
+
+// Modal controls
+$("#modalClose").addEventListener("click", closeProductDetails);
+
+$("#productModal").addEventListener("click", event => {
+  if (event.target.id === "productModal") {
+    closeProductDetails();
+  }
+});
+
+// Add from product details
+$("#modalAdd").addEventListener("click", () => {
+  if (activeProductId !== null) {
+    addToCart(activeProductId);
+    closeProductDetails();
+  }
+});
+
 
 // Change cart quantity
 $("#cartItems").addEventListener("click", event => {
