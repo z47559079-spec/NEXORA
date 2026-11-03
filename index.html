@@ -14,7 +14,11 @@
 </head>
 
 <body>
-
+<script>
+  if (sessionStorage.getItem("nexora_entered") !== "yes") {
+    window.location.replace("welcome.html");
+  }
+</script>
   <div class="announcement" data-fa="ارسال رایگان برای سفارش‌های ویژه" data-en="Free shipping on selected orders">
     ارسال رایگان برای سفارش‌های ویژه
   </div>
