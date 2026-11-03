@@ -197,9 +197,14 @@ function renderProducts() {
             </span>
 
 <div class="product-actions">
+  <button class="favorite-button" data-favorite="${product.id}" aria-label="Add to favorites">
+    ♡
+  </button>
+
   <button class="detail-button" data-details="${product.id}">
     ${language === "fa" ? "مشاهده جزئیات" : "View Details"}
   </button>
+
   <button class="add-button" data-add="${product.id}">+</button>
 </div>
 
