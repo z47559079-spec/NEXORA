@@ -13,11 +13,11 @@
   --muted: #9aa7b8;
 }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: "Vazirmatn", sans-serif;
-  line-height: 1.8;
+ body {
+    background: url("images/hero.png.png") center center / cover fixed no-repeat;
+    color: var(--text);
+    font-family: "Vazirmatn", sans-serif;
+    line-height: 1.8;
 }
 
 body.lang-en {
@@ -106,13 +106,11 @@ nav a:hover {
 .hero {
   min-height: 600px;
   padding: 70px 10%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: none;
+  grid-template-columns: 1fr;
   align-items: center;
   gap: 40px;
-  background:
-    radial-gradient(circle at 80% 40%, #17415a50, transparent 40%),
-    #080b12;
+  background: transparent;
 }
 
 .eyebrow {
