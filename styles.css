@@ -612,3 +612,33 @@ body.lang-en .contact {
     grid-template-columns: 1fr;
   }
 }
+
+/* ABOUT TEXT VISIBILITY FIX */
+
+.about {
+  background: rgba(5, 12, 25, 0.88);
+}
+
+.about h2,
+.about-card h3 {
+  color: #ffffff;
+  text-shadow: 0 2px 12px #000000;
+}
+
+.about-description,
+.about-card p {
+  color: #e3edf8;
+  text-shadow: 0 1px 5px #000000;
+}
+
+.about-card {
+  background: rgba(15, 32, 50, 0.95);
+  border: 1px solid rgba(75, 210, 255, 0.35);
+}
+
+.about-label,
+.about-slogan,
+.about h2 span,
+.about-card span {
+  color: #69dcff;
+}
