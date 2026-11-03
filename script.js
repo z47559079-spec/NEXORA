@@ -451,13 +451,15 @@ $("#cartToggle").addEventListener("click", openCart);
 $("#cartClose").addEventListener("click", closeCart);
 $("#cartBackdrop").addEventListener("click", closeCart);
 
-// Demo checkout
+// Checkout
 $("#checkoutButton").addEventListener("click", () => {
-  showToast(
-    language === "fa"
-      ? "پرداخت واقعی در این نسخه فعال نیست."
-      : "Real payment is not enabled in this demo."
-  );
+  if (cart.length === 0) {
+    showToast("سبد خرید شما خالی است!");
+    return;
+  }
+
+  localStorage.setItem("nexoraCart", JSON.stringify(cart));
+  window.location.href = "checkout.html";
 });
 
 // Initial render
