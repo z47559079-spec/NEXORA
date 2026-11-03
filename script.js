@@ -20,7 +20,7 @@ const products = [
     categoryEn: "Audio",
     price: 2350000,
     priceEn: 79,
-    image: images/earbuds-pulse.jpg/photo-1606220945770-b5b6c2c55bf1?w=700"
+    image: "images/earbuds-pulse.jpg"/photo-1606220945770-b5b6c2c55bf1?w=700"
   },
   {
     id: 3,
