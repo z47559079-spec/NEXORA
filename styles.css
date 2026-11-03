@@ -1052,3 +1052,18 @@ body {
         transition: none;
     }
 }
+/* NEXORA Neon Buttons */
+
+button,
+.btn {
+    transition: all 0.3s ease;
+}
+
+button:hover,
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 0 10px rgba(0, 170, 255, 0.6),
+        0 0 25px rgba(140, 60, 255, 0.4);
+    filter: brightness(1.15);
+}
