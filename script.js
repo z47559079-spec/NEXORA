@@ -382,10 +382,15 @@ $("#searchInput").addEventListener("input", renderProducts);
 // Filter products
 $("#categoryFilter").addEventListener("change", renderProducts);
 
-// Product details and add to cart
+// Product details, favorites and add to cart
 $("#productGrid").addEventListener("click", event => {
+  const favoriteButton = event.target.closest("[data-favorite]");
   const detailButton = event.target.closest("[data-details]");
   const addButton = event.target.closest("[data-add]");
+
+  if (favoriteButton) {
+    toggleFavorite(Number(favoriteButton.dataset.favorite));
+  }
 
   if (detailButton) {
     openProductDetails(Number(detailButton.dataset.details));
