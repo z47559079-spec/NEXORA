@@ -91,7 +91,7 @@ const products = [
 ];
 
 let language = "fa";
-let cart = [];
+
 // Favorites system
 let cart = JSON.parse(localStorage.getItem("nexoraCart")) || [];
 function toggleFavorite(id) {
