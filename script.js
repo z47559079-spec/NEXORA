@@ -1,4 +1,3 @@
-
 const products = [
   {
     id: 1,
@@ -53,7 +52,7 @@ const products = [
     categoryEn: "Accessories",
     price: 990000,
     priceEn: 35,
-    image: "	images/wireless-charger.jpg",
+    image: "images/wireless-charger.jpg",
   },
   {
     id: 6,
@@ -75,7 +74,7 @@ const products = [
     categoryEn: "Wearables",
     price: 3590000,
     priceEn: 119,
-    image: "	images/sport-watch.jpg",
+    image: "images/sport-watch.jpg",
   },
   {
     id: 8,
@@ -92,20 +91,20 @@ const products = [
 
 let language = "fa";
 
-// Favorites system
-let cart = JSON.parse(localStorage.getItem("nexoraCart")) || [];
-function toggleFavorite(id) {
-  if (favorites.includes(id)) {
-    favorites = favorites.filter(item => item !== id);
-  } else {
-    favorites.push(id);
-  }
+let favorites = JSON.parse(
+  localStorage.getItem("nexoraFavorites")
+) || [];
 
-  localStorage.setItem("nexoraFavorites", JSON.stringify(favorites));
-  renderProducts();
-}
+let cart = JSON.parse(
+  localStorage.getItem("nexoraCart")
+) || [];
+
 const $ = selector => document.querySelector(selector);
 
+let activeProductId = null;
+
+
+// Price format
 function money(amount) {
   if (language === "fa") {
     return new Intl.NumberFormat("fa-IR").format(amount) + " تومان";
@@ -114,8 +113,25 @@ function money(amount) {
   return "$" + amount.toLocaleString("en-US");
 }
 
-let activeProductId = null;
 
+// Favorites system
+function toggleFavorite(id) {
+  if (favorites.includes(id)) {
+    favorites = favorites.filter(item => item !== id);
+  } else {
+    favorites.push(id);
+  }
+
+  localStorage.setItem(
+    "nexoraFavorites",
+    JSON.stringify(favorites)
+  );
+
+  renderProducts();
+}
+
+
+// Product details
 function openProductDetails(id) {
   const product = products.find(p => p.id === id);
 
@@ -136,10 +152,12 @@ function openProductDetails(id) {
       fa: "این گجت پوشیدنی با طراحی مدرن و امکانات هوشمند، همراهی مناسب برای زندگی روزمره شماست.",
       en: "A modern wearable gadget designed to make your everyday life smarter."
     },
+
     audio: {
       fa: "با این محصول صوتی از تجربه شنیداری جذاب و طراحی کاربردی لذت ببرید.",
       en: "Enjoy an immersive listening experience with modern design."
     },
+
     accessory: {
       fa: "یک وسیله کاربردی و مدرن برای کامل‌تر کردن تجربه استفاده از گجت‌های هوشمند.",
       en: "A modern and practical accessory for your smart gadgets."
@@ -150,6 +168,7 @@ function openProductDetails(id) {
   $("#modalImage").alt = name;
   $("#modalName").textContent = name;
   $("#modalCategory").textContent = category;
+
   $("#modalDescription").textContent =
     descriptions[product.category][language];
 
@@ -165,11 +184,14 @@ function openProductDetails(id) {
   $("#productModal").classList.add("active");
 }
 
+
 function closeProductDetails() {
   $("#productModal").classList.remove("active");
   activeProductId = null;
 }
 
+
+// Render products
 function renderProducts() {
   const query = $("#searchInput").value.toLowerCase();
   const category = $("#categoryFilter").value;
@@ -189,11 +211,16 @@ function renderProducts() {
   $("#productGrid").innerHTML = filtered.length
     ? filtered.map(product => `
       <article class="product-card">
+
         <div class="product-image">
-          <img src="${product.image}" alt="${language === "fa" ? product.nameFa : product.nameEn}">
+          <img
+            src="${product.image}"
+            alt="${language === "fa" ? product.nameFa : product.nameEn}"
+          >
         </div>
 
         <div class="product-info">
+
           <span class="product-category">
             ${language === "fa" ? product.categoryFa : product.categoryEn}
           </span>
@@ -203,33 +230,52 @@ function renderProducts() {
           </h3>
 
           <div class="product-bottom">
+
             <span class="product-price">
               ${money(language === "fa" ? product.price : product.priceEn)}
             </span>
 
-<div class="product-actions">
-<button class="favorite-button" data-favorite="${product.id}" aria-label="Add to favorites">
-  ♡
-</button>
+            <div class="product-actions">
 
-  <button class="detail-button" data-details="${product.id}">
-    ${language === "fa" ? "مشاهده جزئیات" : "View Details"}
-  </button>
+              <button
+                class="favorite-button"
+                data-favorite="${product.id}"
+                aria-label="Add to favorites"
+              >
+                ${favorites.includes(product.id) ? "♥" : "♡"}
+              </button>
 
-  <button class="add-button" data-add="${product.id}">+</button>
-</div>
+              <button
+                class="detail-button"
+                data-details="${product.id}"
+              >
+                ${language === "fa" ? "مشاهده جزئیات" : "View Details"}
+              </button>
 
+              <button
+                class="add-button"
+                data-add="${product.id}"
+              >
+                +
+              </button>
+
+            </div>
           </div>
         </div>
       </article>
     `).join("")
-    : `<p class="no-results">${language === "fa" ? "محصولی پیدا نشد." : "No products found."}</p>`;
+    : `<p class="no-results">${
+        language === "fa" ? "محصولی پیدا نشد." : "No products found."
+      }</p>`;
 }
 
+
+// Change language
 function setLanguage(nextLanguage) {
   language = nextLanguage;
 
   document.documentElement.lang = language;
+
   document.documentElement.dir =
     language === "fa" ? "rtl" : "ltr";
 
@@ -255,10 +301,11 @@ function setLanguage(nextLanguage) {
     language === "fa" ? "EN" : "FA";
 
   renderProducts();
-    localStorage.setItem("nexoraCart", JSON.stringify(cart));
   renderCart();
 }
 
+
+// Add to cart
 function addToCart(id) {
   const existing = cart.find(item => item.id === id);
 
@@ -271,7 +318,10 @@ function addToCart(id) {
     });
   }
 
-  localStorage.setItem("nexoraCart", JSON.stringify(cart));
+  localStorage.setItem(
+    "nexoraCart",
+    JSON.stringify(cart)
+  );
 
   renderCart();
 
@@ -281,17 +331,9 @@ function addToCart(id) {
       : "Product added to cart"
   );
 }
-  }
 
-  renderCart();
 
-  showToast(
-    language === "fa"
-      ? "محصول به سبد خرید اضافه شد"
-      : "Product added to cart"
-  );
-}
-  localStorage.setItem("nexoraCart", JSON.stringify(cart));
+// Change cart quantity
 function changeQuantity(id, amount) {
   const item = cart.find(item => item.id === id);
 
@@ -303,12 +345,16 @@ function changeQuantity(id, amount) {
     cart = cart.filter(item => item.id !== id);
   }
 
-  localStorage.setItem("nexoraCart", JSON.stringify(cart));
+  localStorage.setItem(
+    "nexoraCart",
+    JSON.stringify(cart)
+  );
 
   renderCart();
 }
-}
 
+
+// Render cart
 function renderCart() {
   const count = cart.reduce(
     (sum, item) => sum + item.quantity,
@@ -333,22 +379,43 @@ function renderCart() {
 
         return `
           <div class="cart-item">
+
             <img src="${product.image}" alt="">
 
             <div class="cart-item-info">
+
               <strong>${name}</strong>
+
               <small>${money(price)}</small>
 
               <div class="quantity-controls">
-                <button data-quantity="${item.id}" data-change="-1">−</button>
+
+                <button
+                  data-quantity="${item.id}"
+                  data-change="-1"
+                >
+                  −
+                </button>
+
                 <span>${item.quantity}</span>
-                <button data-quantity="${item.id}" data-change="1">+</button>
+
+                <button
+                  data-quantity="${item.id}"
+                  data-change="1"
+                >
+                  +
+                </button>
+
               </div>
             </div>
           </div>
         `;
       }).join("")
-    : `<p class="empty-cart">${language === "fa" ? "سبد خرید خالی است." : "Your cart is empty."}</p>`;
+    : `<p class="empty-cart">${
+        language === "fa"
+          ? "سبد خرید خالی است."
+          : "Your cart is empty."
+      }</p>`;
 
   const total = cart.reduce((sum, item) => {
     const product = products.find(
@@ -365,6 +432,8 @@ function renderCart() {
   $("#cartTotal").textContent = money(total);
 }
 
+
+// Toast message
 function showToast(message) {
   const toast = $("#toast");
 
@@ -378,6 +447,8 @@ function showToast(message) {
   }, 2200);
 }
 
+
+// Open and close cart
 function openCart() {
   document.body.classList.add("cart-open");
 }
@@ -386,18 +457,22 @@ function closeCart() {
   document.body.classList.remove("cart-open");
 }
 
-// Change language
+
+// Language button
 $("#languageToggle").addEventListener("click", () => {
   setLanguage(language === "fa" ? "en" : "fa");
 });
 
+
 // Search products
 $("#searchInput").addEventListener("input", renderProducts);
+
 
 // Filter products
 $("#categoryFilter").addEventListener("change", renderProducts);
 
-// Product details, favorites and add to cart
+
+// Product buttons
 $("#productGrid").addEventListener("click", event => {
   const favoriteButton = event.target.closest("[data-favorite]");
   const detailButton = event.target.closest("[data-details]");
@@ -416,6 +491,7 @@ $("#productGrid").addEventListener("click", event => {
   }
 });
 
+
 // Modal controls
 $("#modalClose").addEventListener("click", closeProductDetails);
 
@@ -424,6 +500,7 @@ $("#productModal").addEventListener("click", event => {
     closeProductDetails();
   }
 });
+
 
 // Add from product details
 $("#modalAdd").addEventListener("click", () => {
@@ -446,10 +523,12 @@ $("#cartItems").addEventListener("click", event => {
   }
 });
 
+
 // Cart controls
 $("#cartToggle").addEventListener("click", openCart);
 $("#cartClose").addEventListener("click", closeCart);
 $("#cartBackdrop").addEventListener("click", closeCart);
+
 
 // Checkout
 $("#checkoutButton").addEventListener("click", () => {
@@ -458,9 +537,14 @@ $("#checkoutButton").addEventListener("click", () => {
     return;
   }
 
-  localStorage.setItem("nexoraCart", JSON.stringify(cart));
+  localStorage.setItem(
+    "nexoraCart",
+    JSON.stringify(cart)
+  );
+
   window.location.href = "checkout.html";
 });
+
 
 // Initial render
 renderProducts();
