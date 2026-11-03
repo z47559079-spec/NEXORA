@@ -1,0 +1,157 @@
+
+/* NEXORA CHECKOUT PAGE */
+
+.checkout-page {
+  width: 90%;
+  max-width: 1150px;
+  margin: 70px auto;
+  color: white;
+}
+
+.checkout-page > h1 {
+  color: #55d9ff;
+  text-align: center;
+  font-size: 32px;
+  text-shadow: 0 0 20px #42c8f555;
+}
+
+.checkout-page > p {
+  text-align: center;
+  color: #bdccdc;
+  margin-bottom: 40px;
+}
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 25px;
+  align-items: start;
+}
+
+.checkout-form,
+.order-summary {
+  background: #101c2c;
+  border: 1px solid #45d5ff55;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 0 30px #00bfff12;
+}
+
+.checkout-form h2,
+.order-summary h2 {
+  color: #55d9ff;
+  margin-bottom: 22px;
+}
+
+.checkout-form label {
+  display: block;
+  color: #dce8f5;
+  margin: 15px 0 8px;
+}
+
+.checkout-form input:not([type="radio"]),
+.checkout-form textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #34516b;
+  border-radius: 10px;
+  background: #091522;
+  color: white;
+  outline: none;
+  font: inherit;
+}
+
+.checkout-form input:focus,
+.checkout-form textarea:focus {
+  border-color: #42c8f5;
+  box-shadow: 0 0 12px #42c8f530;
+}
+
+.checkout-form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.checkout-form .shipping-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.checkout-form .main-button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  background: #42c8f5;
+  color: #07121d;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.checkout-form .main-button:hover {
+  background: white;
+  box-shadow: 0 0 20px #42c8f5;
+}
+
+.checkout-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid #294057;
+}
+
+.checkout-item img {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: white;
+}
+
+.checkout-item strong {
+  color: white;
+}
+
+.checkout-item p {
+  color: #a9bfd2;
+  margin: 8px 0;
+}
+
+.checkout-item span {
+  color: #55d9ff;
+}
+
+#checkoutTotal {
+  margin-top: 25px;
+  line-height: 2.2;
+  color: #dce8f5;
+}
+
+#checkoutTotal h3 {
+  color: #55d9ff;
+  border-top: 1px solid #34516b;
+  padding-top: 15px;
+}
+
+#checkoutMessage {
+  text-align: center;
+  color: #55d9ff;
+  margin-top: 25px;
+}
+
+@media (max-width: 750px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-form,
+  .order-summary {
+    padding: 20px;
+  }
+}
