@@ -989,44 +989,9 @@ body.lang-en .contact {
 }
 /* ===== NEXORA Animated Neon Background ===== */
 
-body {
-    background-color: #050816;
-    background-image:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(0, 153, 255, 0.18),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 85% 30%,
-            rgba(153, 51, 255, 0.17),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 50% 90%,
-            rgba(0, 255, 220, 0.10),
-            transparent 40%
-        );
 
-    background-size: 200% 200%;
-    animation: nexoraGlow 18s ease-in-out infinite alternate;
-}
 
-/* حرکت آرام نورها */
 
-@keyframes nexoraGlow {
-    0% {
-        background-position: 0% 0%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 100%;
-    }
-}
 
 /* نور دور کارت محصولات */
 
