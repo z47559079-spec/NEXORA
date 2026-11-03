@@ -62,4 +62,51 @@ document.querySelectorAll('input[name="shipping"]').forEach(input => {
   input.addEventListener("change", renderCheckout);
 });
 
-renderCheckout();
+renderCheckout();// Final order submission
+const checkoutForm = document.getElementById("checkoutForm");
+const checkoutMessage = document.getElementById("checkoutMessage");
+
+checkoutForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  if (cart.length === 0) {
+    checkoutMessage.textContent = "سبد خرید شما خالی است!";
+    return;
+  }
+
+  const fullName = document.getElementById("fullName").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+  const postalCode = document.getElementById("postalCode").value;
+
+  const shipping = document.querySelector('input[name="shipping"]:checked').value;
+
+  const order = {
+    orderNumber: Date.now(),
+    customer: fullName,
+    phone: phone,
+    address: address,
+    postalCode: postalCode,
+    shipping: shipping,
+    products: cart,
+    date: new Date().toLocaleString("fa-IR")
+  };
+
+  localStorage.setItem("nexoraLastOrder", JSON.stringify(order));
+
+  localStorage.removeItem("nexoraCart");
+
+  checkoutForm.style.display = "none";
+
+  checkoutMessage.innerHTML = `
+    <h2>🎉 سفارش شما با موفقیت ثبت شد!</h2>
+    <p>از خرید شما از NEXORA سپاسگزاریم.</p>
+    <p>شماره سفارش: ${order.orderNumber}</p>
+    <a href="index.html" class="main-button">
+      بازگشت به فروشگاه
+    </a>
+  `;
+
+  checkoutItems.innerHTML = "";
+  checkoutTotal.innerHTML = "";
+});
