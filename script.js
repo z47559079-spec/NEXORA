@@ -9,7 +9,7 @@ const products = [
     categoryEn: "Wearables",
     price: 4890000,
     priceEn: 149,
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700"
+    image: "images/smartwatch-nova.jpg",
   },
   {
     id: 2,
@@ -31,7 +31,7 @@ const products = [
     categoryEn: "Wearables",
     price: 6250000,
     priceEn: 189,
-    image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=700"
+    image: "images/smart-glasses-vision.jpg",
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const products = [
     categoryEn: "Audio",
     price: 1790000,
     priceEn: 59,
-    image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=700"
+    image: "images/speaker-echo.jpg",
   },
   {
     id: 5,
@@ -53,7 +53,7 @@ const products = [
     categoryEn: "Accessories",
     price: 990000,
     priceEn: 35,
-    image: "https://images.unsplash.com/photo-1591290619762-c588b7c5e3a4?w=700"
+    image: "	images/wireless-charger.jpg",
   },
   {
     id: 6,
@@ -64,7 +64,7 @@ const products = [
     categoryEn: "Accessories",
     price: 790000,
     priceEn: 25,
-    image: "https://images.unsplash.com/photo-1551816230-ef5deaed4a26?w=700"
+    image: "images/smart-tracker.jpg",
   },
   {
     id: 7,
@@ -75,7 +75,7 @@ const products = [
     categoryEn: "Wearables",
     price: 3590000,
     priceEn: 119,
-    image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=700"
+    image: "	images/sport-watch.jpg",
   },
   {
     id: 8,
@@ -86,7 +86,7 @@ const products = [
     categoryEn: "Audio",
     price: 4190000,
     priceEn: 129,
-    image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=700"
+    image: "images/headphones-studio.jpg",
   }
 ];
 
