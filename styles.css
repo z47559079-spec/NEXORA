@@ -879,3 +879,8 @@ body.lang-en .contact {
     max-height: 200px;
   }
 }
+.product-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
