@@ -642,3 +642,102 @@ body.lang-en .contact {
 .about-card span {
   color: #69dcff;
 }
+
+/* NEXORA CONTACT SECTION */
+
+.contact {
+  margin: 50px 9%;
+  padding: 75px 30px;
+  text-align: center;
+  background: rgba(5, 12, 25, 0.92);
+  border: 1px solid #42cfff45;
+  border-radius: 25px;
+}
+
+.contact-heading span {
+  color: #55d9ff;
+  letter-spacing: 5px;
+  font-size: 13px;
+  direction: ltr;
+  display: inline-block;
+}
+
+.contact-heading h2 {
+  color: #ffffff;
+  font-size: clamp(28px, 5vw, 42px);
+  margin: 18px 0;
+  text-shadow: 0 2px 12px #000;
+}
+
+.contact-heading p {
+  color: #e1eaf5;
+  font-size: 16px;
+  line-height: 2;
+}
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 45px;
+}
+
+.contact-card {
+  padding: 30px 18px;
+  background: rgba(19, 39, 59, 0.98);
+  border: 1px solid #4acfff45;
+  border-radius: 20px;
+  transition: .3s;
+}
+
+.contact-card:hover {
+  transform: translateY(-8px);
+  border-color: #55d9ff;
+  box-shadow: 0 12px 35px #00bfff25;
+}
+
+.contact-icon {
+  font-size: 42px;
+  color: #63dcff;
+  margin-bottom: 12px;
+}
+
+.contact-card h3 {
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.contact-card p {
+  color: #e0eaf5;
+  font-size: 14px;
+  direction: ltr;
+  overflow-wrap: anywhere;
+}
+
+.contact-card a {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 25px;
+  background: #42c8f5;
+  color: #07121d;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: .3s;
+}
+
+.contact-card a:hover {
+  background: #ffffff;
+  box-shadow: 0 0 20px #42c8f5;
+}
+
+@media (max-width: 800px) {
+  .contact-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .contact {
+    margin: 30px 5%;
+    padding: 45px 18px;
+  }
+}
