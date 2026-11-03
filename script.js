@@ -92,7 +92,19 @@ const products = [
 
 let language = "fa";
 let cart = [];
+// Favorites system
+let favorites = JSON.parse(localStorage.getItem("nexoraFavorites")) || [];
 
+function toggleFavorite(id) {
+  if (favorites.includes(id)) {
+    favorites = favorites.filter(item => item !== id);
+  } else {
+    favorites.push(id);
+  }
+
+  localStorage.setItem("nexoraFavorites", JSON.stringify(favorites));
+  renderProducts();
+}
 const $ = selector => document.querySelector(selector);
 
 function money(amount) {
@@ -197,9 +209,9 @@ function renderProducts() {
             </span>
 
 <div class="product-actions">
-  <button class="favorite-button" data-favorite="${product.id}" aria-label="Add to favorites">
-    ♡
-  </button>
+<button class="favorite-button" data-favorite="${product.id}" aria-label="Add to favorites">
+  ♡
+</button>
 
   <button class="detail-button" data-details="${product.id}">
     ${language === "fa" ? "مشاهده جزئیات" : "View Details"}
