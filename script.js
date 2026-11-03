@@ -93,8 +93,7 @@ const products = [
 let language = "fa";
 let cart = [];
 // Favorites system
-let favorites = JSON.parse(localStorage.getItem("nexoraFavorites")) || [];
-
+let cart = JSON.parse(localStorage.getItem("nexoraCart")) || [];
 function toggleFavorite(id) {
   if (favorites.includes(id)) {
     favorites = favorites.filter(item => item !== id);
@@ -256,6 +255,7 @@ function setLanguage(nextLanguage) {
     language === "fa" ? "EN" : "FA";
 
   renderProducts();
+    localStorage.setItem("nexoraCart", JSON.stringify(cart));
   renderCart();
 }
 
@@ -279,7 +279,7 @@ function addToCart(id) {
       : "Product added to cart"
   );
 }
-
+  localStorage.setItem("nexoraCart", JSON.stringify(cart));
 function changeQuantity(id, amount) {
   const item = cart.find(item => item.id === id);
 
