@@ -140,7 +140,13 @@ function renderProducts() {
               ${money(language === "fa" ? product.price : product.priceEn)}
             </span>
 
-            <button class="add-button" data-add="${product.id}">+</button>
+<div class="product-actions">
+  <button class="detail-button" data-details="${product.id}">
+    ${language === "fa" ? "مشاهده جزئیات" : "View Details"}
+  </button>
+  <button class="add-button" data-add="${product.id}">+</button>
+</div>
+
           </div>
         </div>
       </article>
